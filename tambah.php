@@ -1,29 +1,3 @@
-<?php
-$koneksi = mysqli_connect("localhost","root","","todolistukk");
- 
-// Check connection
-if (mysqli_connect_errno()){
-	echo "Koneksi database gagal : " . mysqli_connect_error();
-}
-
-// Tambah data
-if (isset($_POST['add_task'])) {
-    $task = $_POST['task'];
-    $prioritas = $_POST['prioritas'];
-    $date = $_POST['date'];
-
-    if (!empty($task) && !empty($prioritas) && !empty($date)) {
-        mysqli_query($koneksi,"INSERT INTO tasks VALUES('','$task','$prioritas','$date','0')");
-        echo "<script>alert('Data berhasil disimpan');</script>";
-        header('Location:all_task.php');
-    }else {
-        echo "<script>alert('Semua kolom harus diisi');</script>";
-    }
-}
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
