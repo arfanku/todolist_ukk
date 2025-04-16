@@ -1,33 +1,3 @@
-<?php 
- 
-$koneksi = mysqli_connect("localhost","root","","todolistukk");
- 
-// Check connection
-if (mysqli_connect_errno()){
-	echo "Koneksi database gagal : " . mysqli_connect_error();
-}
-
-// status
-if (isset($_GET['complete'])) {
-    $id = $_GET['complete'];
-    mysqli_query($koneksi, "UPDATE tasks SET status=1 WHERE id =$id");
-    echo "<script>alert('Data Berhasil di Update');</script>";
-    header('Location:all_task.php');
-}
-
-
-// Hapus task
-if (isset($_GET['delete'])) {
-    $id = $_GET['delete']; 
-    mysqli_query($koneksi, "DELETE FROM tasks WHERE id =$id");
-    echo "<script>alert('Data Berhasil di Hapus');</script>";
-    header('Location:all_task.php');
-}
-
-$result = mysqli_query($koneksi, "SELECT * FROM tasks ORDER BY status ASC, prioritas DESC, date ASC");
- 
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
